@@ -1,4 +1,4 @@
-package Model.Animal;
+package Model.Animal.PackPets;
 
 import java.util.List;
 

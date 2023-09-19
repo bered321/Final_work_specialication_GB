@@ -1,5 +1,7 @@
 package Model.Animal;
 
+import Model.Animal.Pets.DomesticAnimalTypes;
+
 import java.time.LocalDate;
 import java.util.List;
 

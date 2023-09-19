@@ -78,12 +78,12 @@ public abstract class Animal {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n").append("Kind of animal: ").append(kindOfAnimal).append("\n");
-        sb.append("Type of animal: ").append(typeOfAnimal).append("\n");
+        sb.append("\n").append("Тип животного: ").append(kindOfAnimal).append("\n");
+        sb.append("Животное: ").append(typeOfAnimal).append("\n");
         sb.append("Id: ").append(id).append("\n");
-        sb.append("Name: ").append(name).append("\n");
-        sb.append("Birth date: ").append(birthDate).append("\n");
-        sb.append("Commands: ").append(commands).append("\n");
+        sb.append("Кличка: ").append(name).append("\n");
+        sb.append("Дата рождения: ").append(birthDate).append("\n");
+        sb.append("Команды: ").append(commands).append("\n");
         return sb.toString();
     }
 }
