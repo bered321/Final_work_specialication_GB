@@ -54,23 +54,43 @@ public class AnimalPresenter {
 
 
     public List<Animal> filterAnimalsByType(String type) {
-        // Логика для фильтрации животных по типу
-        // Вызов методов модели, например animalRegistry.filterAnimalsByType(...)
-        return null; // Замените на реальную реализацию
+        List<Animal> filteredAnimals = animalRegistry.filterAnimalsByType(type);
+        if (!filteredAnimals.isEmpty()) {
+            System.out.println("Список животных типа " + type + ":");
+            for (Animal animal : filteredAnimals) {
+                System.out.println(animal.toString());
+            }
+        } else {
+            System.err.println("Животные указанного типа не найдены.");
+        }
+        return filteredAnimals;
     }
 
     public List<Animal> filterAnimalsByBirthDate(LocalDate startDate, LocalDate endDate) {
-        // Логика для фильтрации животных по дате рождения
-        // Вызов методов модели, например animalRegistry.filterAnimalsByBirthDate(...)
-        return null; // Замените на реальную реализацию
+        List<Animal> filteredAnimals = animalRegistry.filterAnimalsByBirthDate(startDate, endDate);
+        if (!filteredAnimals.isEmpty()) {
+            System.out.println("Список животных, родившихся с " + startDate + " по " + endDate + ":");
+            for (Animal animal : filteredAnimals) {
+                System.out.println(animal.toString());
+            }
+        } else {
+            System.err.println("Животные, родившиеся в указанный период, не найдены.");
+        }
+        return filteredAnimals;
     }
 
     public List<Animal> getAllAnimals() {
-        // Логика для получения списка всех животных
-        // Вызов методов модели, например animalRegistry.getAllAnimals()
-        return null; // Замените на реальную реализацию
+        List<Animal> allAnimals = animalRegistry.getAllAnimals();
+        if (!allAnimals.isEmpty()) {
+            System.out.println("Список всех животных:");
+            for (Animal animal : allAnimals) {
+                System.out.println(animal.toString());
+            }
+        } else {
+            System.err.println("Животные не найдены.");
+        }
+        return allAnimals;
     }
 
-    // Другие методы для управления данными и бизнес-логикой...
 }
 

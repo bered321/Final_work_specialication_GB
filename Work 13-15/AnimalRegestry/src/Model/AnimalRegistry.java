@@ -73,34 +73,26 @@ public class AnimalRegistry {
         return null;
     }
 
-
-    public void printAllAnimals() {
-        for (Animal animal : animalList) {
-            System.out.println(animal.toString());
-        }
-    }
-
-    public void filterAnimalsByType(String type) {
+    public List<Animal> filterAnimalsByType(String type) {
+        List<Animal> filteredAnimals = new ArrayList<>();
         for (Animal animal : animalList) {
             if (animal.getTypeOfAnimal().equalsIgnoreCase(type)) {
-                System.out.println(animal.toString());
+                filteredAnimals.add(animal);
             }
         }
+        return filteredAnimals;
     }
 
     public List<Animal> filterAnimalsByBirthDate(LocalDate startDate, LocalDate endDate) {
         List<Animal> filteredAnimals = new ArrayList<>();
-
         for (Animal animal : animalList) {
             LocalDate birthDate = animal.getBirthDate();
             if (birthDate.isEqual(startDate) || (birthDate.isAfter(startDate) && birthDate.isBefore(endDate))) {
                 filteredAnimals.add(animal);
             }
         }
-
         return filteredAnimals;
     }
-
 
     public List<Animal> getAllAnimals() {
         return animalList;
