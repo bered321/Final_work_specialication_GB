@@ -54,6 +54,26 @@ public class AnimalRegistry {
         return animal;
     }
 
+    public boolean addCommandsToAnimal(int animalId, List<String> commands) {
+        for (Animal animal : animalList) {
+            if (animal.getId() == animalId) {
+                animal.addCommands(commands);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<String> getCommandsByAnimalId(int animalId) {
+        for (Animal animal : animalList) {
+            if (animal.getId() == animalId) {
+                return animal.getCommands();
+            }
+        }
+        return null;
+    }
+
+
     public void printAllAnimals() {
         for (Animal animal : animalList) {
             System.out.println(animal.toString());

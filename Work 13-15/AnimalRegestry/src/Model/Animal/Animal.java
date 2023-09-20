@@ -71,8 +71,8 @@ public abstract class Animal {
         this.birthDate = birthDate;
     }
 
-    public void addCommand(String command) {
-        commands.add(command);
+    public void addCommands(List<String> commands) {
+        this.commands.addAll(commands);
     }
 
     @Override
