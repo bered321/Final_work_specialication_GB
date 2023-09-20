@@ -1,7 +1,10 @@
 package View;
 
 import Presenter.AnimalPresenter;
+import Model.Animal.Animal;
 
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -60,19 +63,45 @@ public class AnimalView {
     }
 
     private void addNewAnimal(Scanner scanner) {
-        // Логика для добавления нового животного
+        System.out.print("Введите тип животного: ");
+        String type = scanner.nextLine();
+
+        System.out.print("Введите имя животного: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Введите дату рождения (гггг-мм-дд): ");
+        String birthDateStr = scanner.nextLine();
+        LocalDate birthDate = LocalDate.parse(birthDateStr);
+
+        List<String> commands = getUserInputForCommands(scanner);
+
+        presenter.createAnimal(type, name, birthDate, commands);
+    }
+
+    private List<String> getUserInputForCommands(Scanner scanner) {
+        System.out.print("Введите команды через запятую: ");
+        String commandsInput = scanner.nextLine();
+        return Arrays.asList(commandsInput.split(","));
     }
 
     private void displayCommands() {
-        // Логика для вывода списка команд
+        System.out.print("Введите ID животного: ");
+        int animalId = new Scanner(System.in).nextInt();
+        presenter.getCommandsByAnimalId(animalId);
     }
 
     private void addNewCommands(Scanner scanner) {
-        // Логика для добавления новых команд
+        System.out.print("Введите ID животного: ");
+        int animalId = scanner.nextInt();
+        scanner.nextLine();
+
+        List<String> newCommands = getUserInputForCommands(scanner);
+
+        presenter.addCommandsToAnimal(animalId, newCommands);
     }
 
     private void displayAllAnimals() {
-        // Логика для вывода всех животных
+        presenter.getAllAnimals();
     }
 
     private void handleFilterMenu(Scanner scanner) {
@@ -81,7 +110,7 @@ public class AnimalView {
         while (isFilterMenuRunning) {
             displayFilterMenu();
             int filterChoice = scanner.nextInt();
-            scanner.nextLine(); // Очистка буфера после ввода числа
+            scanner.nextLine();
 
             switch (filterChoice) {
                 case 1:
@@ -108,13 +137,20 @@ public class AnimalView {
     }
 
     private void filterByAnimalType(Scanner scanner) {
-        // Логика для фильтрации по типу животного
+        System.out.print("Введите тип животного: ");
+        String type = scanner.nextLine();
+        presenter.filterAnimalsByType(type);
     }
 
     private void filterByBirthDate(Scanner scanner) {
-        // Логика для фильтрации по дате рождения
+        System.out.print("Введите начальную дату (гггг-мм-дд): ");
+        String startDateStr = scanner.nextLine();
+        LocalDate startDate = LocalDate.parse(startDateStr);
+
+        System.out.print("Введите конечную дату (гггг-мм-дд): ");
+        String endDateStr = scanner.nextLine();
+        LocalDate endDate = LocalDate.parse(endDateStr);
+
+        presenter.filterAnimalsByBirthDate(startDate, endDate);
     }
-
-    // Другие методы...
 }
-
